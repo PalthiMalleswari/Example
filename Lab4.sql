@@ -43,15 +43,15 @@ select s.Sname,s.sID from sailors s,reseves r1,boat b1,
 		   s.sID=r2.sID and r2.BoatID=b2.BoatID and b2.Boatcol='Green';
 
 
-
-
-
 select s.Sname,s.sID from sailors s,reseves r1,boat b1, 
 										reseves r2,boat b2
      where s.sID=r1.sID and r1.BoatID=b1.BoatID and b1.Boatcol='Red' and
 		   s.sID=r2.sID and r2.BoatID=b2.BoatID and b2.Boatcol='Green';
 
-          
+select s.Sname,s.sID from sailors s,reseves r1,boat b1, 
+										reseves r2,boat b2
+     where (s.sID=r1.sID and r1.BoatID=b1.BoatID and b1.Boatcol='Red')-
+		   (s.sID=r2.sID and r2.BoatID=b2.BoatID and b2.Boatcol='Green');
           
           
           
