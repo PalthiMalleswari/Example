@@ -2,7 +2,8 @@ select distinct age from sailors ;
 select Sname,Address,Srating from sailors where Srating>8;
 select Sname,Srating,age from sailors where Srating>7 and age between 25 and 35;
 select BoatName,Boatcol from boat ;
-select BoatName,Boatcol from boat where Boatcol='Red';
+select BoatName,Boatcol from boat where
+  Boatcol='Red';
 select Sname from sailors where Sname like '____';
 select Sname,Address from sailors where Sname like 'R%o';
 select Sname from sailors where Sname like '___%'; 
@@ -38,7 +39,6 @@ select  Sname,Boatcol from sailors s,reseves r,boat b where
       r.BoatID=b.BoatID and b.Boatcol='Red' or b.Boatcol='Green'and s.sID=r.sID;
 select r.sID,b.BoatID,b.Boatcol from reseves r join boat b on r.BoatID=b.BoatID and
   ( b.Boatcol='Red' or b.Boatcol='Green');
-
 
 
 select s.Sname,s.sID from sailors s,reseves r1,boat b1, 
