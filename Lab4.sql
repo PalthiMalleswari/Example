@@ -32,7 +32,7 @@ select Srating,count(sID)as NoOfSailors from sailors group by Srating;
 select count(sID) from sailors;
 ---- select age from sailors where age>min(age);
 select Sname,sID,age,Srating
-   from sailors s where age>(select min(age) from sailors) or Srating=7;
+   from sailors s where age>(select max(age) from sailors where Srating=7);
 
 select  Sname,sID,Boatcol from sailors s,reseves r,boat b where
       r.BoatID=b.BoatID and Boatcol='Red' or Boatcol='Green'and s.sID=r.sID;
