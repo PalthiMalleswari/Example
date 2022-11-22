@@ -34,9 +34,10 @@ select count(sID) from sailors;
 select Sname,sID,age,Srating
    from sailors s where age>(select max(age) from sailors where Srating=7);
 
-select  Sname,sID,Boatcol from sailors s,reseves r,boat b where
-      r.BoatID=b.BoatID and Boatcol='Red' or Boatcol='Green'and s.sID=r.sID;
-
+select  Sname,Boatcol from sailors s,reseves r,boat b where
+      r.BoatID=b.BoatID and b.Boatcol='Red' or b.Boatcol='Green'and s.sID=r.sID;
+select r.sID,b.BoatID,b.Boatcol from reseves r join boat b on r.BoatID=b.BoatID and
+  ( b.Boatcol='Red' or b.Boatcol='Green');
 
 
 
@@ -44,6 +45,13 @@ select s.Sname,s.sID from sailors s,reseves r1,boat b1,
 										reseves r2,boat b2
      where s.sID=r1.sID and r1.BoatID=b1.BoatID and b1.Boatcol='Red' and
 		   s.sID=r2.sID and r2.BoatID=b2.BoatID and b2.Boatcol='Green';
+           
+select s.Sname,s.sID from sailors s,reseves r,boat b where r.BoatID=b.BoatID
+   and r.sID=s.sID and Boatcol='Red'and s.sID not in 
+   (select s1.sID from sailors s1,reseves r1,boat b1 where r1.BoatID=b1.BoatID
+   and r1.sID=s1.sID and Boatcol='Green');
+
+						
 
           
           
